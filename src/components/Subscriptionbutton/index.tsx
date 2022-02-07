@@ -1,19 +1,11 @@
-import { FaGithub } from "react-icons/fa";
-import { FiX } from "react-icons/fi";
-
 import styles from "./styles.module.scss";
 
-export function SubscriptionButton() {
-  const isUserLoggedIn = true;
+interface SubscriptionbuttonProps {
+  priceId: string;
+}
 
-  function LoggedComponent(){
-    return (
-      <>
-      <p>User From Github</p>
-      <FiX className={styles.closeIcon} />
-      </>
-    )
-  }
+export function SubscriptionButton({ priceId }: SubscriptionbuttonProps) {
+  
 
   return (
     <button className={styles.subscribreButton} type="button">
