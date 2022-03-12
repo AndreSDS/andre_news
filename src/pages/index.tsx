@@ -1,10 +1,7 @@
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
-
-import { stripe } from "../services/stripe";
-
 import { SubscriptionButton } from "../components/Subscriptionbutton";
-
+import { stripe } from "../services/stripe";
 import styles from "./home.module.scss";
 
 interface HomeProps {
