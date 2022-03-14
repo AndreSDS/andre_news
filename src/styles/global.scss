@@ -10,6 +10,7 @@
   --gray-300: #a8a8b3;
   --gray-400: #29292e;
   --gray-500: #1f2729;
+  --gray-700: #323238;
   --gray-900: #121214;
   --cyan-500: #61dafb;
   --yellow-500: #eba417;
@@ -37,7 +38,7 @@ input,
 textarea,
 select,
 button {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem "Roboto-400", sans-serif;
 }
 
 button {
