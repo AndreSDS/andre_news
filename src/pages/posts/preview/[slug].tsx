@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { RichText } from "prismic-dom";
+import * as prismicH from "@prismicio/helpers";
 import { useEffect } from "react";
 import { LinkTo } from "../../../components/Link";
 import { createClient } from "../../../services/prismic";
@@ -67,8 +67,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const post = {
     slug,
-    title: RichText.asText(response.data.title),
-    content: RichText.asHtml(response.data.content.splice(0, 2)),
+    title: prismicH.asText(response.data.title),
+    content: prismicH.asHTML(response.data.content.splice(0, 2)),
     updateAt: new Date(response.last_publication_date).toLocaleDateString(
       "pt-BR",
       {

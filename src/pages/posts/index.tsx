@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { RichText } from "prismic-dom";
+import * as prismicH from '@prismicio/helpers';
 import { LinkTo } from "../../components/Link";
 import { createClient } from "../../services/prismic";
 import styles from "./styles.module.scss";
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = response.map((post) => {
     return {
       slug: post.uid,
-      title: RichText.asText(post.data.title),
+      title: prismicH.asText(post.data.title),
       content:
         post.data.content.find((content) => content.type === "paragraph")
           ?.text ?? "",

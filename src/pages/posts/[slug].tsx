@@ -1,9 +1,10 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/react";
 import Head from "next/head";
-import { RichText } from "prismic-dom";
+import * as prismicH from '@prismicio/helpers';
 import { createClient } from "../../services/prismic";
 import styles from "./post.module.scss";
+import { Session } from "next-auth";
 
 interface PostProps {
   post: { slug: string; title: string; content: string; updateAt: string };
@@ -37,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   params,
 }) => {
-  const session = await getSession({ req });
+  const session: any = await getSession({ req });
   const { slug } = params;
 
   if (!session?.activeSubscription) {
@@ -54,8 +55,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const post = {
     slug,
-    title: RichText.asText(response.data.title),
-    content: RichText.asHtml(response.data.content),
+    title: prismicH.asText(response.data.title),
+    content: prismicH.asHTML(response.data.content),
     updateAt: new Date(response.last_publication_date).toLocaleDateString(
       "pt-BR",
       {
